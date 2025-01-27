@@ -23,10 +23,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "please enter your password"],
       min: 8,
-      validate: [
-        /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-        "Password should be combination of atlease one lower ,upper and speical character and length should be greater than 8",
-      ],
     },
     photo: {
       type: String,
