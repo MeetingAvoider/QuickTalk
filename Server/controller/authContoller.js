@@ -51,12 +51,12 @@ router.post("/login", async function (req, res) {
         message: "User doesn't exists",
       });
     }
-    console.log(req.body.password);
+
     const isPassCorrect = await bcrypt.compare(
       req.body.password,
       user.password
     );
-    console.log(isPassCorrect);
+
     if (!isPassCorrect) {
       return res.status(400).json({
         success: false,
@@ -65,7 +65,7 @@ router.post("/login", async function (req, res) {
     }
 
     const token = jsonwebtoken.sign(
-      { firstname: user, photo: req.body.photo, lastname: req.body.lastname },
+      { userID: user._id },
       process.env.SECERET_KEYS,
       {
         expiresIn: "15min",
@@ -87,7 +87,6 @@ router.post("/login", async function (req, res) {
   }
 });
 router.post("/logout", async function (req, res) {
-  console.log(req.cookies);
   res.clearCookie("token");
   return res.status(200).json({
     message: "logged out successfully",
