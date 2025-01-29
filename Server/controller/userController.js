@@ -4,7 +4,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 router.get("/get-logged-user", authMiddleware, async function (req, res) {
   try {
     const user = await userModel.findOne({ _id: req.body.userId });
-    return res.status(200).json({
+    return res.status(201).json({
       message: "user fetched successfully",
       data: user,
       success: true,

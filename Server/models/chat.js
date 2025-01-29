@@ -4,12 +4,12 @@ const chatSchema = new mongoose.Schema(
     members: [
       {
         types: mongoose.Schema.Types.ObjectId,
-        ref: "user",
+        ref: "users",
       },
     ],
     lastMessage: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "message",
+      ref: "messages",
     },
     unReadMessage: {
       type: Number,
