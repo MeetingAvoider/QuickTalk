@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "please enter your password"],
       min: 8,
-      select: false,
     },
     photo: {
       type: String,
